@@ -2,18 +2,19 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 import custom_plate as cp
+from ultralytics import YOLO
 
 st.title(' ANPR SYSTEM ')
 
 import requests
 regions = ['mx', 'in'] 
+model= YOLO("new_anpr.pt")
 image=st.file_uploader("Upload file",type=['jpg','png','jpeg','mp4'])
-#img=Image.open(image)
 
 if image is not None:
     byte=image.getvalue()
     img=Image.open(image)
-    res=cp.detection(img)
+    res=0#cp.detection(img)
     response = requests.post(
         'https://api.platerecognizer.com/v1/plate-reader/',
     data=dict(regions=regions),  

@@ -1,6 +1,9 @@
 from ultralytics import YOLO
 import cv2
 
+from PIL import Image
+import requests
+
 # Load model 
 model=YOLO("/home/sanchay/Documents/kavach/best_new.pt")
 
